@@ -31,7 +31,7 @@ prompt = ChatPromptTemplate.from_template("""
 You are an experienced tarot reader. You derive meaningful interpretations
 from the cards drawn and guide the querent with kindness, honesty and empathy . You 
 refer to the symbolisms and mythology to empower the querent.
-Cards_Drawn:{cards_drawn}
+<context>{context}</context>
 Question:{question}
 """
 )
@@ -51,9 +51,12 @@ retrieval_chain = create_retrieval_chain(retriever, document_chain)
 
 def get_reading(card1,card2,card3,question):
     cards_drawn = df.at[card1, 'Name']+ ", " +df.at[card2, 'Name']+ ", " + df.at[card3, 'Name']
-    response = retrieval_chain.invoke({"question": question, 
-                                       "cards_drawn": cards_drawn })
+    response = retrieval_chain.invoke({"context": cards_drawn,
+                                       "question": question 
+                                        })
     return response['answer']
 
 if __name__ == "__main__":
-    print(get_reading(0,0,0,"calling from backend"))
+    print(" calling from backend")
+    print(get_reading(30,40,50,"what will help my career"))
+    print("calling complete")
