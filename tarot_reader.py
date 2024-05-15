@@ -30,9 +30,9 @@ def draw_cards():
 
     cards_drawn = df.at[card1, 'Name'] + ", " + df.at[card2, 'Name'] + ", " + df.at[card3, 'Name']
     image_path = [f"images/{card1}.png",
-                  "images/blank.png",
+                  
                   f"images/{card2}.png",
-                  "images/blank.png",
+                  
                   f"images/{card3}.png",
                   ]
     
