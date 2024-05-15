@@ -12,10 +12,10 @@ from langchain_core.messages import HumanMessage, AIMessage
 
 import toml
 
-secrets = toml.load("streamlit/secrets.toml")
+
 
 # Load environment variables
-openai.api_key = secrets["OPENAI_API_KEY"]
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # Function to draw tarot cards
 def draw_cards():
